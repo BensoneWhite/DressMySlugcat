@@ -87,7 +87,11 @@ namespace DressMySlugcat
             return PlayerGraphics.DefaultBodyPartColorHex(name as SlugcatStats.Name);
         }
 
-        public static List<string> ValidSlugcatNames => SlugcatStats.Name.values.entries.Where(x => !SlugcatStats.HiddenOrUnplayableSlugcat(new SlugcatStats.Name(x)) || "Slugpup".Equals(x) || "Inv".Equals(x)).ToList();
+        //Disabling watcher due having a lot of changes for sprites, temporary change
+        public static List<string> ValidSlugcatNames =>
+            SlugcatStats.Name.values.entries
+                .Where(x => x != "Watcher" && (!SlugcatStats.HiddenOrUnplayableSlugcat(new SlugcatStats.Name(x)) || "Slugpup".Equals(x) || "Inv".Equals(x)))
+                .ToList();
 
         public static string[] ListDirectory(string path, bool directories = false, bool includeAll = false)
         {
